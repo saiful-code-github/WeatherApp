@@ -1,0 +1,20 @@
+.gradient_text{
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+/* animation */
+.bounce{
+    animation: animate 1s linear infinite;
+}
+@keyframes animate {
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(10px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
