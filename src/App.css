@@ -18,3 +18,7 @@
         transform: translateY(0);
     }
 }
+.textTransfrom{
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
