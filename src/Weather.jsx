@@ -11,7 +11,9 @@ export const Weather = () => {
     const getData = async(defaultCity = city) => {
         setLoading(true);
         setError(false)
-        if(!defaultCity) return;
+        if (!defaultCity) {
+            return;
+        }
          try { 
             const apiKey = 'a7269d6d493d3531065a0480e789324f'
             const url = "https://api.openweathermap.org/data/2.5/weather"
@@ -24,14 +26,12 @@ export const Weather = () => {
             });
             console.log(res.data)
             setWeatherData(res.data);
-            if(defaultCity !== city){
-                setCity("")
-            }
             setCity("")
             setLoading(false)
          } catch (error) {
             console.log(error);
             setError("Faild to Fetch Data ", error)
+            setWeatherData("");
          }finally{
             setLoading(false)
          }
