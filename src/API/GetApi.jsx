@@ -8,7 +8,12 @@ export const GetApi = () => {
     const [newTodo, setNewTodo] = useState({
         email: ""
     })
-    const [editId, setEditId] = useState(null)
+    const [editId, setEditId] = useState(null);
+    const validateEmail = (email) => {
+        // Basic email regex pattern
+        const re = /\S+@\S+\.\S+/;
+        return re.test(email);
+      };
     //getdata
     const getData = async() => {
         setLoading(true);
@@ -53,6 +58,10 @@ export const GetApi = () => {
      }
     //  addData
     const addData = async() => {
+        if(!newTodo.email.trim()) return alert("please fill the input");
+        if(!validateEmail(newTodo.email)){
+            return alert ("please vaild email")
+        }
         try {
             const res = await postApi({ newTodo});
             if(res.status === 200){
@@ -108,7 +117,7 @@ export const GetApi = () => {
             <h1 className="text-center text-4xl font-bold capitalize bg-gradient-to-br to-sky-400 to-[50%] 
             from-purple-700 from-[15%] via-white via-[30%] textTransfrom my-[20px]">Todo App</h1>
             <div className="flex  justify-center mx-auto mb-[30px]">
-                <input type="text" placeholder="Enter Your todo" name="email" value={newTodo.email} onChange={handleChange} className="outline-0 border-b-2 py-[10px] text-white border-sky-500"/>
+                <input type="email" placeholder="Enter Your todo" name="email" value={newTodo.email} onChange={handleChange} className="outline-0 border-b-2 py-[10px] text-white border-sky-500"/>
                 <button className={`${editId ? "bg-orange-600" : "bg-blue-700"} text-white py-[5px] px-[10px] cursor-pointer`} onClick={handleSubmit}>
                     {editId ? "Update" : "Add"}</button>
             </div>

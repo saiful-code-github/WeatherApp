@@ -40,7 +40,11 @@ export const Weather = () => {
         getData("Kolkata");
     },[])
     return (
-       <div className="bg-blue-200 shadow-2xl mx-auto rounded-[10px] py-[25px] px-[35px] flex flex-col justify-center max-w-[500px] mt-[30px]">
+        <div>
+            <h1 style={{ textAlign: "center", marginTop: "100px", textTransform: "capitalize" }} className={`text-[38px] font-black bg-gradient-to-r to-blue-400 from-white to-57% from-40% gradient_text`}>
+                        Weather App
+                    </h1>
+                    <div className="bg-blue-200 shadow-2xl mx-auto rounded-[10px] py-[25px] px-[35px] flex flex-col justify-center max-w-[500px] mt-[30px]">
           <div className={` w-full flex flex-row`}>
               <input type="text" value={city} placeholder="Enter City Name" onChange={(e)=> setCity(e.target.value)} className={`outline-0 border-b-[1px] border-black  text-black w-[90%] py-[10px]`}/>
               <button className="bg-black text-white py-[10px] cursor-pointer px-[15px] w-[40%]" onClick={()=>getData(city)}>Get Weather</button>
@@ -58,5 +62,6 @@ export const Weather = () => {
             </div>
           )}
        </div>
+        </div>
     )
 }
